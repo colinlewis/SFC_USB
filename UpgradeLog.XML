@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SFC_USB_cs">
+</Property><Property Name="Solution File" Value="C:\dev\SFC USB\SFC_USB_cs.sln">
+</Property><Property Name="User Options File" Value="C:\dev\SFC USB\SFC_USB_cs.suo">
+</Property><Property Name="Date" Value="Monday, June 20, 2011">
+</Property><Property Name="Time" Value="16:15 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="SFC_USB_cs.sln" Description="File successfully backed up as C:\dev\SFC USB\Backup\SFC_USB_cs.sln">
+</Event><Event ErrorLevel="0" Project="" Source="SFC_USB_cs.suo" Description="File successfully backed up as C:\dev\SFC USB\Backup\SFC_USB_cs.suo">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USB_cs.csproj" Description="Project file successfully backed up as C:\dev\SFC USB\Backup\SFC_USB_cs.csproj">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USB_cs.csproj.user" Description="Project user file successfully backed up as C:\dev\SFC USB\Backup\SFC_USB_cs.csproj.user">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="DeviceManagement.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\DeviceManagement.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="DeviceManagementApi.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\DeviceManagementApi.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="FileIOApi.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\FileIOApi.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="frmMain.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\frmMain.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="Properties\Resources.Designer.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="Properties\Settings.Designer.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USB.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\SFC_USB.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USBDevice.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\SFC_USBDevice.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USBDeviceApi.cs" Description="File successfully backed up as C:\dev\SFC USB\Backup\SFC_USBDeviceApi.cs">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="app.config" Description="File successfully backed up as C:\dev\SFC USB\Backup\app.config">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="Properties\Settings.settings" Description="File successfully backed up as C:\dev\SFC USB\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="readme.txt" Description="File successfully backed up as C:\dev\SFC USB\Backup\readme.txt">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="frmMain.resx" Description="File successfully backed up as C:\dev\SFC USB\Backup\frmMain.resx">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="Properties\Resources.resx" Description="File successfully backed up as C:\dev\SFC USB\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USB_cs.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SFC_USB_cs" Source="SFC_USB_cs.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SFC_USB_cs.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="SFC_USB_cs.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SFC_USB_cs" Source="SFC_USB_cs.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
