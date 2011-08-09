@@ -27,3 +27,12 @@ D:\dev\SFC USB_Colin\obj\Release\ResolveAssemblyReference.cache
 D:\dev\SFC USB_Colin\obj\Release\SFC_USB.frmMain.resources
 D:\dev\SFC USB_Colin\obj\Release\SFC_USB.Properties.Resources.resources
 D:\dev\SFC USB_Colin\obj\Release\SFC_USB_cs.csproj.GenerateResource.Cache
+D:\dev\SFC_USB\bin\Release\SFC_USB.exe.config
+D:\dev\SFC_USB\obj\Release\SFC_USB.exe
+D:\dev\SFC_USB\obj\Release\SFC_USB.pdb
+D:\dev\SFC_USB\bin\Release\SFC_USB.exe
+D:\dev\SFC_USB\bin\Release\SFC_USB.pdb
+D:\dev\SFC_USB\obj\Release\ResolveAssemblyReference.cache
+D:\dev\SFC_USB\obj\Release\SFC_USB.frmMain.resources
+D:\dev\SFC_USB\obj\Release\SFC_USB.Properties.Resources.resources
+D:\dev\SFC_USB\obj\Release\SFC_USB_cs.csproj.GenerateResource.Cache

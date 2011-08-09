@@ -281,6 +281,7 @@ namespace SFC_USB
         const byte DESICCANT_REGEN = 2;
         const byte DESICCANT_CLOSED = 3;
         const byte DESICCANT_MANUAL = 4;
+        const byte DESICCANT_COOLDOWN = 5;
 
         const byte FCE_OUT_PUMP = 0x01;
         const byte FCE_OUT_FAN     =0x02;
@@ -537,6 +538,7 @@ namespace SFC_USB
         private CheckBox cbLogNightMode;
         private CheckBox resetAtMidnightCheckbox;
         private TabPage tabDessicant;
+        private RadioButton radioDesCooldown;
         private Label label73;
 
 
@@ -1101,6 +1103,7 @@ namespace SFC_USB
             this.btnTestString = new System.Windows.Forms.Button();
             this.btnTestMct485 = new System.Windows.Forms.Button();
             this.btnRamDump = new System.Windows.Forms.Button();
+            this.tabDessicant = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.lstResults = new System.Windows.Forms.ListBox();
             this.btnFieldTestOnSun = new System.Windows.Forms.Button();
@@ -1126,7 +1129,7 @@ namespace SFC_USB
             this.label88 = new System.Windows.Forms.Label();
             this.btnFieldTestOff = new System.Windows.Forms.Button();
             this.btnFieldTestShutdown = new System.Windows.Forms.Button();
-            this.tabDessicant = new System.Windows.Forms.TabPage();
+            this.radioDesCooldown = new System.Windows.Forms.RadioButton();
             this.tabCtrl.SuspendLayout();
             this.tabSFC.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1283,7 +1286,7 @@ namespace SFC_USB
             // label89
             // 
             this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(179, 277);
+            this.label89.Location = new System.Drawing.Point(149, 277);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(49, 14);
             this.label89.TabIndex = 44;
@@ -1291,7 +1294,7 @@ namespace SFC_USB
             // 
             // txtFceRtd
             // 
-            this.txtFceRtd.Location = new System.Drawing.Point(235, 274);
+            this.txtFceRtd.Location = new System.Drawing.Point(205, 274);
             this.txtFceRtd.Name = "txtFceRtd";
             this.txtFceRtd.Size = new System.Drawing.Size(42, 20);
             this.txtFceRtd.TabIndex = 43;
@@ -1299,6 +1302,7 @@ namespace SFC_USB
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.radioDesCooldown);
             this.groupBox3.Controls.Add(this.txtTempMinFan);
             this.groupBox3.Controls.Add(this.label98);
             this.groupBox3.Controls.Add(this.txtDesRegenHumid);
@@ -1327,16 +1331,16 @@ namespace SFC_USB
             this.groupBox3.Controls.Add(this.radioDesRegen);
             this.groupBox3.Controls.Add(this.radioDesDrying);
             this.groupBox3.Controls.Add(this.radioDesOff);
-            this.groupBox3.Location = new System.Drawing.Point(488, 55);
+            this.groupBox3.Location = new System.Drawing.Point(401, 55);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(256, 288);
+            this.groupBox3.Size = new System.Drawing.Size(343, 337);
             this.groupBox3.TabIndex = 42;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Desiccant";
             // 
             // txtTempMinFan
             // 
-            this.txtTempMinFan.Location = new System.Drawing.Point(213, 263);
+            this.txtTempMinFan.Location = new System.Drawing.Point(301, 278);
             this.txtTempMinFan.Name = "txtTempMinFan";
             this.txtTempMinFan.Size = new System.Drawing.Size(37, 20);
             this.txtTempMinFan.TabIndex = 63;
@@ -1345,7 +1349,7 @@ namespace SFC_USB
             // label98
             // 
             this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(137, 266);
+            this.label98.Location = new System.Drawing.Point(225, 281);
             this.label98.Name = "label98";
             this.label98.Size = new System.Drawing.Size(72, 14);
             this.label98.TabIndex = 62;
@@ -1353,7 +1357,7 @@ namespace SFC_USB
             // 
             // txtDesRegenHumid
             // 
-            this.txtDesRegenHumid.Location = new System.Drawing.Point(213, 161);
+            this.txtDesRegenHumid.Location = new System.Drawing.Point(301, 176);
             this.txtDesRegenHumid.Name = "txtDesRegenHumid";
             this.txtDesRegenHumid.Size = new System.Drawing.Size(37, 20);
             this.txtDesRegenHumid.TabIndex = 61;
@@ -1362,7 +1366,7 @@ namespace SFC_USB
             // label97
             // 
             this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(113, 164);
+            this.label97.Location = new System.Drawing.Point(201, 179);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(94, 14);
             this.label97.TabIndex = 60;
@@ -1370,7 +1374,7 @@ namespace SFC_USB
             // 
             // btnWriteTimes
             // 
-            this.btnWriteTimes.Location = new System.Drawing.Point(67, 216);
+            this.btnWriteTimes.Location = new System.Drawing.Point(155, 231);
             this.btnWriteTimes.Name = "btnWriteTimes";
             this.btnWriteTimes.Size = new System.Drawing.Size(75, 23);
             this.btnWriteTimes.TabIndex = 59;
@@ -1380,7 +1384,7 @@ namespace SFC_USB
             // 
             // btnReadTemps
             // 
-            this.btnReadTemps.Location = new System.Drawing.Point(67, 187);
+            this.btnReadTemps.Location = new System.Drawing.Point(155, 202);
             this.btnReadTemps.Name = "btnReadTemps";
             this.btnReadTemps.Size = new System.Drawing.Size(75, 23);
             this.btnReadTemps.TabIndex = 58;
@@ -1390,7 +1394,7 @@ namespace SFC_USB
             // 
             // txtDesTempDuty3
             // 
-            this.txtDesTempDuty3.Location = new System.Drawing.Point(213, 239);
+            this.txtDesTempDuty3.Location = new System.Drawing.Point(301, 254);
             this.txtDesTempDuty3.Name = "txtDesTempDuty3";
             this.txtDesTempDuty3.Size = new System.Drawing.Size(37, 20);
             this.txtDesTempDuty3.TabIndex = 57;
@@ -1398,7 +1402,7 @@ namespace SFC_USB
             // 
             // btnDesWriteTimes
             // 
-            this.btnDesWriteTimes.Location = new System.Drawing.Point(156, 113);
+            this.btnDesWriteTimes.Location = new System.Drawing.Point(262, 14);
             this.btnDesWriteTimes.Name = "btnDesWriteTimes";
             this.btnDesWriteTimes.Size = new System.Drawing.Size(75, 23);
             this.btnDesWriteTimes.TabIndex = 44;
@@ -1408,7 +1412,7 @@ namespace SFC_USB
             // 
             // txtDesTempDuty2
             // 
-            this.txtDesTempDuty2.Location = new System.Drawing.Point(213, 213);
+            this.txtDesTempDuty2.Location = new System.Drawing.Point(301, 228);
             this.txtDesTempDuty2.Name = "txtDesTempDuty2";
             this.txtDesTempDuty2.Size = new System.Drawing.Size(37, 20);
             this.txtDesTempDuty2.TabIndex = 56;
@@ -1416,9 +1420,9 @@ namespace SFC_USB
             // 
             // btnDesReadTimes
             // 
-            this.btnDesReadTimes.Location = new System.Drawing.Point(156, 17);
+            this.btnDesReadTimes.Location = new System.Drawing.Point(143, 14);
             this.btnDesReadTimes.Name = "btnDesReadTimes";
-            this.btnDesReadTimes.Size = new System.Drawing.Size(75, 23);
+            this.btnDesReadTimes.Size = new System.Drawing.Size(74, 23);
             this.btnDesReadTimes.TabIndex = 43;
             this.btnDesReadTimes.Text = "Read Times";
             this.btnDesReadTimes.UseVisualStyleBackColor = true;
@@ -1426,7 +1430,7 @@ namespace SFC_USB
             // 
             // txtDesTempDuty1
             // 
-            this.txtDesTempDuty1.Location = new System.Drawing.Point(213, 187);
+            this.txtDesTempDuty1.Location = new System.Drawing.Point(301, 202);
             this.txtDesTempDuty1.Name = "txtDesTempDuty1";
             this.txtDesTempDuty1.Size = new System.Drawing.Size(37, 20);
             this.txtDesTempDuty1.TabIndex = 55;
@@ -1435,7 +1439,7 @@ namespace SFC_USB
             // label94
             // 
             this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(148, 242);
+            this.label94.Location = new System.Drawing.Point(236, 257);
             this.label94.Name = "label94";
             this.label94.Size = new System.Drawing.Size(63, 14);
             this.label94.TabIndex = 54;
@@ -1457,15 +1461,15 @@ namespace SFC_USB
             ":45",
             ":50",
             ":55"});
-            this.cbClosedMin.Location = new System.Drawing.Point(206, 87);
+            this.cbClosedMin.Location = new System.Drawing.Point(204, 114);
             this.cbClosedMin.Name = "cbClosedMin";
-            this.cbClosedMin.Size = new System.Drawing.Size(44, 22);
+            this.cbClosedMin.Size = new System.Drawing.Size(55, 22);
             this.cbClosedMin.TabIndex = 13;
             // 
             // label95
             // 
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(148, 216);
+            this.label95.Location = new System.Drawing.Point(236, 231);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(66, 14);
             this.label95.TabIndex = 53;
@@ -1499,7 +1503,7 @@ namespace SFC_USB
             "9pm",
             "10pm",
             "11pm"});
-            this.cbClosedHr.Location = new System.Drawing.Point(142, 87);
+            this.cbClosedHr.Location = new System.Drawing.Point(140, 114);
             this.cbClosedHr.Name = "cbClosedHr";
             this.cbClosedHr.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbClosedHr.Size = new System.Drawing.Size(58, 22);
@@ -1508,7 +1512,7 @@ namespace SFC_USB
             // label96
             // 
             this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(148, 190);
+            this.label96.Location = new System.Drawing.Point(236, 205);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(63, 14);
             this.label96.TabIndex = 52;
@@ -1532,7 +1536,7 @@ namespace SFC_USB
             ":55"});
             this.cbRegenMin.Location = new System.Drawing.Point(206, 65);
             this.cbRegenMin.Name = "cbRegenMin";
-            this.cbRegenMin.Size = new System.Drawing.Size(44, 22);
+            this.cbRegenMin.Size = new System.Drawing.Size(55, 22);
             this.cbRegenMin.TabIndex = 11;
             // 
             // cbRegenHr
@@ -1587,7 +1591,7 @@ namespace SFC_USB
             ":55"});
             this.cbDryingMin.Location = new System.Drawing.Point(206, 43);
             this.cbDryingMin.Name = "cbDryingMin";
-            this.cbDryingMin.Size = new System.Drawing.Size(44, 22);
+            this.cbDryingMin.Size = new System.Drawing.Size(55, 22);
             this.cbDryingMin.TabIndex = 9;
             // 
             // cbDryingHr
@@ -1660,7 +1664,7 @@ namespace SFC_USB
             // radioDesManual
             // 
             this.radioDesManual.AutoSize = true;
-            this.radioDesManual.Location = new System.Drawing.Point(80, 115);
+            this.radioDesManual.Location = new System.Drawing.Point(67, 139);
             this.radioDesManual.Name = "radioDesManual";
             this.radioDesManual.Size = new System.Drawing.Size(59, 18);
             this.radioDesManual.TabIndex = 4;
@@ -1672,7 +1676,7 @@ namespace SFC_USB
             // radioDesClosed
             // 
             this.radioDesClosed.AutoSize = true;
-            this.radioDesClosed.Location = new System.Drawing.Point(80, 91);
+            this.radioDesClosed.Location = new System.Drawing.Point(67, 115);
             this.radioDesClosed.Name = "radioDesClosed";
             this.radioDesClosed.Size = new System.Drawing.Size(58, 18);
             this.radioDesClosed.TabIndex = 3;
@@ -1684,7 +1688,7 @@ namespace SFC_USB
             // radioDesRegen
             // 
             this.radioDesRegen.AutoSize = true;
-            this.radioDesRegen.Location = new System.Drawing.Point(80, 67);
+            this.radioDesRegen.Location = new System.Drawing.Point(67, 67);
             this.radioDesRegen.Name = "radioDesRegen";
             this.radioDesRegen.Size = new System.Drawing.Size(56, 18);
             this.radioDesRegen.TabIndex = 2;
@@ -1696,7 +1700,7 @@ namespace SFC_USB
             // radioDesDrying
             // 
             this.radioDesDrying.AutoSize = true;
-            this.radioDesDrying.Location = new System.Drawing.Point(80, 43);
+            this.radioDesDrying.Location = new System.Drawing.Point(67, 43);
             this.radioDesDrying.Name = "radioDesDrying";
             this.radioDesDrying.Size = new System.Drawing.Size(56, 18);
             this.radioDesDrying.TabIndex = 1;
@@ -1708,7 +1712,7 @@ namespace SFC_USB
             // radioDesOff
             // 
             this.radioDesOff.AutoSize = true;
-            this.radioDesOff.Location = new System.Drawing.Point(80, 19);
+            this.radioDesOff.Location = new System.Drawing.Point(67, 19);
             this.radioDesOff.Name = "radioDesOff";
             this.radioDesOff.Size = new System.Drawing.Size(41, 18);
             this.radioDesOff.TabIndex = 0;
@@ -1736,7 +1740,7 @@ namespace SFC_USB
             // 
             // txtSys30Return
             // 
-            this.txtSys30Return.Location = new System.Drawing.Point(394, 260);
+            this.txtSys30Return.Location = new System.Drawing.Point(334, 260);
             this.txtSys30Return.Name = "txtSys30Return";
             this.txtSys30Return.Size = new System.Drawing.Size(44, 20);
             this.txtSys30Return.TabIndex = 39;
@@ -1745,7 +1749,7 @@ namespace SFC_USB
             // label78
             // 
             this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(315, 263);
+            this.label78.Location = new System.Drawing.Point(255, 263);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(73, 14);
             this.label78.TabIndex = 38;
@@ -1753,7 +1757,7 @@ namespace SFC_USB
             // 
             // txtSys30Supply
             // 
-            this.txtSys30Supply.Location = new System.Drawing.Point(394, 234);
+            this.txtSys30Supply.Location = new System.Drawing.Point(334, 234);
             this.txtSys30Supply.Name = "txtSys30Supply";
             this.txtSys30Supply.Size = new System.Drawing.Size(44, 20);
             this.txtSys30Supply.TabIndex = 37;
@@ -1761,7 +1765,7 @@ namespace SFC_USB
             // 
             // txtSys30W
             // 
-            this.txtSys30W.Location = new System.Drawing.Point(394, 208);
+            this.txtSys30W.Location = new System.Drawing.Point(334, 208);
             this.txtSys30W.Name = "txtSys30W";
             this.txtSys30W.Size = new System.Drawing.Size(44, 20);
             this.txtSys30W.TabIndex = 36;
@@ -1769,7 +1773,7 @@ namespace SFC_USB
             // 
             // txtSys30lph
             // 
-            this.txtSys30lph.Location = new System.Drawing.Point(394, 182);
+            this.txtSys30lph.Location = new System.Drawing.Point(334, 182);
             this.txtSys30lph.Name = "txtSys30lph";
             this.txtSys30lph.Size = new System.Drawing.Size(44, 20);
             this.txtSys30lph.TabIndex = 35;
@@ -1778,7 +1782,7 @@ namespace SFC_USB
             // label75
             // 
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(315, 237);
+            this.label75.Location = new System.Drawing.Point(255, 237);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(74, 14);
             this.label75.TabIndex = 34;
@@ -1787,7 +1791,7 @@ namespace SFC_USB
             // label76
             // 
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(315, 211);
+            this.label76.Location = new System.Drawing.Point(255, 211);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(51, 14);
             this.label76.TabIndex = 33;
@@ -1796,7 +1800,7 @@ namespace SFC_USB
             // label77
             // 
             this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(315, 185);
+            this.label77.Location = new System.Drawing.Point(255, 185);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(57, 14);
             this.label77.TabIndex = 32;
@@ -1804,28 +1808,28 @@ namespace SFC_USB
             // 
             // txtFceOut4
             // 
-            this.txtFceOut4.Location = new System.Drawing.Point(401, 130);
+            this.txtFceOut4.Location = new System.Drawing.Point(341, 130);
             this.txtFceOut4.Name = "txtFceOut4";
             this.txtFceOut4.Size = new System.Drawing.Size(37, 20);
             this.txtFceOut4.TabIndex = 31;
             // 
             // txtFceOut3
             // 
-            this.txtFceOut3.Location = new System.Drawing.Point(401, 104);
+            this.txtFceOut3.Location = new System.Drawing.Point(341, 104);
             this.txtFceOut3.Name = "txtFceOut3";
             this.txtFceOut3.Size = new System.Drawing.Size(37, 20);
             this.txtFceOut3.TabIndex = 30;
             // 
             // txtFceOut2
             // 
-            this.txtFceOut2.Location = new System.Drawing.Point(401, 78);
+            this.txtFceOut2.Location = new System.Drawing.Point(341, 78);
             this.txtFceOut2.Name = "txtFceOut2";
             this.txtFceOut2.Size = new System.Drawing.Size(37, 20);
             this.txtFceOut2.TabIndex = 29;
             // 
             // txtFceOut1
             // 
-            this.txtFceOut1.Location = new System.Drawing.Point(401, 52);
+            this.txtFceOut1.Location = new System.Drawing.Point(341, 52);
             this.txtFceOut1.Name = "txtFceOut1";
             this.txtFceOut1.Size = new System.Drawing.Size(37, 20);
             this.txtFceOut1.TabIndex = 28;
@@ -1833,7 +1837,7 @@ namespace SFC_USB
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(336, 133);
+            this.label41.Location = new System.Drawing.Point(276, 133);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(59, 14);
             this.label41.TabIndex = 27;
@@ -1842,7 +1846,7 @@ namespace SFC_USB
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(336, 107);
+            this.label40.Location = new System.Drawing.Point(276, 107);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(59, 14);
             this.label40.TabIndex = 26;
@@ -1851,7 +1855,7 @@ namespace SFC_USB
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(336, 81);
+            this.label39.Location = new System.Drawing.Point(276, 81);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(59, 14);
             this.label39.TabIndex = 25;
@@ -1860,7 +1864,7 @@ namespace SFC_USB
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(336, 55);
+            this.label38.Location = new System.Drawing.Point(276, 55);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(59, 14);
             this.label38.TabIndex = 24;
@@ -1869,7 +1873,7 @@ namespace SFC_USB
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(168, 251);
+            this.label31.Location = new System.Drawing.Point(138, 251);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(61, 14);
             this.label31.TabIndex = 23;
@@ -1878,7 +1882,7 @@ namespace SFC_USB
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(182, 211);
+            this.label30.Location = new System.Drawing.Point(152, 211);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(51, 14);
             this.label30.TabIndex = 22;
@@ -1887,7 +1891,7 @@ namespace SFC_USB
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(182, 185);
+            this.label29.Location = new System.Drawing.Point(152, 185);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(47, 14);
             this.label29.TabIndex = 21;
@@ -1896,7 +1900,7 @@ namespace SFC_USB
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(182, 159);
+            this.label28.Location = new System.Drawing.Point(152, 159);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(47, 14);
             this.label28.TabIndex = 20;
@@ -1905,7 +1909,7 @@ namespace SFC_USB
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(182, 133);
+            this.label27.Location = new System.Drawing.Point(152, 133);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(47, 14);
             this.label27.TabIndex = 19;
@@ -1914,7 +1918,7 @@ namespace SFC_USB
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(182, 107);
+            this.label26.Location = new System.Drawing.Point(152, 107);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(47, 14);
             this.label26.TabIndex = 18;
@@ -1923,7 +1927,7 @@ namespace SFC_USB
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(182, 81);
+            this.label25.Location = new System.Drawing.Point(152, 81);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(47, 14);
             this.label25.TabIndex = 17;
@@ -1932,7 +1936,7 @@ namespace SFC_USB
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(182, 55);
+            this.label24.Location = new System.Drawing.Point(152, 55);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(47, 14);
             this.label24.TabIndex = 16;
@@ -1967,7 +1971,7 @@ namespace SFC_USB
             // 
             // txtFceDNI
             // 
-            this.txtFceDNI.Location = new System.Drawing.Point(235, 248);
+            this.txtFceDNI.Location = new System.Drawing.Point(205, 248);
             this.txtFceDNI.Name = "txtFceDNI";
             this.txtFceDNI.Size = new System.Drawing.Size(42, 20);
             this.txtFceDNI.TabIndex = 12;
@@ -1975,7 +1979,7 @@ namespace SFC_USB
             // 
             // txtFceFlowSw
             // 
-            this.txtFceFlowSw.Location = new System.Drawing.Point(235, 208);
+            this.txtFceFlowSw.Location = new System.Drawing.Point(205, 208);
             this.txtFceFlowSw.Name = "txtFceFlowSw";
             this.txtFceFlowSw.Size = new System.Drawing.Size(42, 20);
             this.txtFceFlowSw.TabIndex = 11;
@@ -1983,7 +1987,7 @@ namespace SFC_USB
             // 
             // txtFceRtdAD
             // 
-            this.txtFceRtdAD.Location = new System.Drawing.Point(235, 182);
+            this.txtFceRtdAD.Location = new System.Drawing.Point(205, 182);
             this.txtFceRtdAD.Name = "txtFceRtdAD";
             this.txtFceRtdAD.Size = new System.Drawing.Size(42, 20);
             this.txtFceRtdAD.TabIndex = 10;
@@ -1991,7 +1995,7 @@ namespace SFC_USB
             // 
             // txtFceIn5
             // 
-            this.txtFceIn5.Location = new System.Drawing.Point(235, 156);
+            this.txtFceIn5.Location = new System.Drawing.Point(205, 156);
             this.txtFceIn5.Name = "txtFceIn5";
             this.txtFceIn5.Size = new System.Drawing.Size(42, 20);
             this.txtFceIn5.TabIndex = 9;
@@ -1999,7 +2003,7 @@ namespace SFC_USB
             // 
             // txtFceIn4
             // 
-            this.txtFceIn4.Location = new System.Drawing.Point(235, 130);
+            this.txtFceIn4.Location = new System.Drawing.Point(205, 130);
             this.txtFceIn4.Name = "txtFceIn4";
             this.txtFceIn4.Size = new System.Drawing.Size(42, 20);
             this.txtFceIn4.TabIndex = 8;
@@ -2007,7 +2011,7 @@ namespace SFC_USB
             // 
             // txtFceIn3
             // 
-            this.txtFceIn3.Location = new System.Drawing.Point(235, 104);
+            this.txtFceIn3.Location = new System.Drawing.Point(205, 104);
             this.txtFceIn3.Name = "txtFceIn3";
             this.txtFceIn3.Size = new System.Drawing.Size(42, 20);
             this.txtFceIn3.TabIndex = 7;
@@ -2015,7 +2019,7 @@ namespace SFC_USB
             // 
             // txtFceIn2
             // 
-            this.txtFceIn2.Location = new System.Drawing.Point(235, 78);
+            this.txtFceIn2.Location = new System.Drawing.Point(205, 78);
             this.txtFceIn2.Name = "txtFceIn2";
             this.txtFceIn2.Size = new System.Drawing.Size(42, 20);
             this.txtFceIn2.TabIndex = 6;
@@ -2023,7 +2027,7 @@ namespace SFC_USB
             // 
             // txtFceIn1
             // 
-            this.txtFceIn1.Location = new System.Drawing.Point(235, 52);
+            this.txtFceIn1.Location = new System.Drawing.Point(205, 52);
             this.txtFceIn1.Name = "txtFceIn1";
             this.txtFceIn1.Size = new System.Drawing.Size(42, 20);
             this.txtFceIn1.TabIndex = 5;
@@ -2079,10 +2083,10 @@ namespace SFC_USB
             this.tabString.Controls.Add(this.label10);
             this.tabString.Controls.Add(this.label9);
             this.tabString.Controls.Add(this.label8);
-            this.tabString.Location = new System.Drawing.Point(4, 23);
+            this.tabString.Location = new System.Drawing.Point(4, 22);
             this.tabString.Name = "tabString";
             this.tabString.Padding = new System.Windows.Forms.Padding(3);
-            this.tabString.Size = new System.Drawing.Size(760, 409);
+            this.tabString.Size = new System.Drawing.Size(760, 410);
             this.tabString.TabIndex = 1;
             this.tabString.Text = "Strings";
             this.tabString.UseVisualStyleBackColor = true;
@@ -2288,9 +2292,9 @@ namespace SFC_USB
             this.tabMCTfw.Controls.Add(this.label33);
             this.tabMCTfw.Controls.Add(this.cbFwStartString);
             this.tabMCTfw.Controls.Add(this.label32);
-            this.tabMCTfw.Location = new System.Drawing.Point(4, 23);
+            this.tabMCTfw.Location = new System.Drawing.Point(4, 22);
             this.tabMCTfw.Name = "tabMCTfw";
-            this.tabMCTfw.Size = new System.Drawing.Size(760, 409);
+            this.tabMCTfw.Size = new System.Drawing.Size(760, 410);
             this.tabMCTfw.TabIndex = 2;
             this.tabMCTfw.Text = "MCT Firmware";
             this.tabMCTfw.UseVisualStyleBackColor = true;
@@ -2512,9 +2516,9 @@ namespace SFC_USB
             this.tabMctParam.Controls.Add(this.label73);
             this.tabMctParam.Controls.Add(this.btnRealAllParam);
             this.tabMctParam.Controls.Add(this.btnWriteAllParam);
-            this.tabMctParam.Location = new System.Drawing.Point(4, 23);
+            this.tabMctParam.Location = new System.Drawing.Point(4, 22);
             this.tabMctParam.Name = "tabMctParam";
-            this.tabMctParam.Size = new System.Drawing.Size(760, 409);
+            this.tabMctParam.Size = new System.Drawing.Size(760, 410);
             this.tabMctParam.TabIndex = 3;
             this.tabMctParam.Text = "MCT Parameters";
             this.tabMctParam.UseVisualStyleBackColor = true;
@@ -2732,10 +2736,10 @@ namespace SFC_USB
             this.tabMctControl.Controls.Add(this.label55);
             this.tabMctControl.Controls.Add(this.label56);
             this.tabMctControl.Controls.Add(this.label57);
-            this.tabMctControl.Location = new System.Drawing.Point(4, 23);
+            this.tabMctControl.Location = new System.Drawing.Point(4, 22);
             this.tabMctControl.Name = "tabMctControl";
             this.tabMctControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tabMctControl.Size = new System.Drawing.Size(760, 409);
+            this.tabMctControl.Size = new System.Drawing.Size(760, 410);
             this.tabMctControl.TabIndex = 4;
             this.tabMctControl.Text = "MCT Control";
             this.tabMctControl.UseVisualStyleBackColor = true;
@@ -3534,9 +3538,9 @@ namespace SFC_USB
             this.tabDataLog.Controls.Add(this.label1);
             this.tabDataLog.Controls.Add(this.groupBox2);
             this.tabDataLog.Controls.Add(this.groupBox1);
-            this.tabDataLog.Location = new System.Drawing.Point(4, 23);
+            this.tabDataLog.Location = new System.Drawing.Point(4, 22);
             this.tabDataLog.Name = "tabDataLog";
-            this.tabDataLog.Size = new System.Drawing.Size(760, 409);
+            this.tabDataLog.Size = new System.Drawing.Size(760, 410);
             this.tabDataLog.TabIndex = 5;
             this.tabDataLog.Text = "Data Logging";
             this.tabDataLog.UseVisualStyleBackColor = true;
@@ -3964,9 +3968,9 @@ namespace SFC_USB
             this.tabTesting.Controls.Add(this.btnTestString);
             this.tabTesting.Controls.Add(this.btnTestMct485);
             this.tabTesting.Controls.Add(this.btnRamDump);
-            this.tabTesting.Location = new System.Drawing.Point(4, 23);
+            this.tabTesting.Location = new System.Drawing.Point(4, 22);
             this.tabTesting.Name = "tabTesting";
-            this.tabTesting.Size = new System.Drawing.Size(760, 409);
+            this.tabTesting.Size = new System.Drawing.Size(760, 410);
             this.tabTesting.TabIndex = 6;
             this.tabTesting.Text = "Testing";
             this.tabTesting.UseVisualStyleBackColor = true;
@@ -4031,6 +4035,16 @@ namespace SFC_USB
             this.btnRamDump.Text = "RAM Dump";
             this.btnRamDump.UseVisualStyleBackColor = true;
             this.btnRamDump.Click += new System.EventHandler(this.btnRamDump_Click);
+            // 
+            // tabDessicant
+            // 
+            this.tabDessicant.Location = new System.Drawing.Point(4, 22);
+            this.tabDessicant.Name = "tabDessicant";
+            this.tabDessicant.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDessicant.Size = new System.Drawing.Size(760, 410);
+            this.tabDessicant.TabIndex = 7;
+            this.tabDessicant.Text = "Dessicant";
+            this.tabDessicant.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -4249,15 +4263,17 @@ namespace SFC_USB
             this.btnFieldTestShutdown.UseVisualStyleBackColor = true;
             this.btnFieldTestShutdown.Click += new System.EventHandler(this.btnFieldTestShutdown_Click);
             // 
-            // tabDessicant
+            // radioDesCooldown
             // 
-            this.tabDessicant.Location = new System.Drawing.Point(4, 23);
-            this.tabDessicant.Name = "tabDessicant";
-            this.tabDessicant.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDessicant.Size = new System.Drawing.Size(760, 409);
-            this.tabDessicant.TabIndex = 7;
-            this.tabDessicant.Text = "Dessicant";
-            this.tabDessicant.UseVisualStyleBackColor = true;
+            this.radioDesCooldown.AutoSize = true;
+            this.radioDesCooldown.Location = new System.Drawing.Point(67, 91);
+            this.radioDesCooldown.Name = "radioDesCooldown";
+            this.radioDesCooldown.Size = new System.Drawing.Size(74, 18);
+            this.radioDesCooldown.TabIndex = 64;
+            this.radioDesCooldown.TabStop = true;
+            this.radioDesCooldown.Text = "Cooldown";
+            this.radioDesCooldown.UseVisualStyleBackColor = true;
+            this.radioDesCooldown.CheckedChanged += new System.EventHandler(this.radioDesCooldown_CheckedChanged);
             // 
             // frmMain
             // 
@@ -6181,9 +6197,11 @@ namespace SFC_USB
                             radioDesRegen.Checked = true;
                         else if (rxBuffer[ MCTCommand.USB_PACKET_DATA] == DESICCANT_CLOSED)
                             radioDesClosed.Checked = true;
-                        else if (rxBuffer[ MCTCommand.USB_PACKET_DATA] == DESICCANT_MANUAL)
+                        else if (rxBuffer[MCTCommand.USB_PACKET_DATA] == DESICCANT_MANUAL)
                             radioDesManual.Checked = true;
-                        cbFan.Checked = ((rxBuffer[ MCTCommand.USB_PACKET_DATA+1] & FCE_OUT_FAN) != 0);
+                        else if (rxBuffer[MCTCommand.USB_PACKET_DATA] == DESICCANT_COOLDOWN)
+                            radioDesCooldown.Checked = true;
+                        cbFan.Checked = ((rxBuffer[MCTCommand.USB_PACKET_DATA + 1] & FCE_OUT_FAN) != 0);
                         cbValve.Checked = ((rxBuffer[ MCTCommand.USB_PACKET_DATA+1] & FCE_OUT_VALVE) != 0);
                         cbHeat.Checked = ((rxBuffer[ MCTCommand.USB_PACKET_DATA+1] & FCE_OUT_HEAT) != 0);
                         // flush out the CheckChanged events before clearing the flagDesiccantResp flag
@@ -7935,6 +7953,15 @@ namespace SFC_USB
             flagSetDesiccant = true;
         }
 
+        private void radioDesCooldown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (flagDesiccantResp)
+                // don't send out a message if the change was due to an SFC response
+                return;
+            desiccantNewState = DESICCANT_COOLDOWN;
+            flagSetDesiccant = true;
+        }
+        
         private void radioDesClosed_CheckedChanged(object sender, EventArgs e)
         {
             if (flagDesiccantResp)
@@ -8046,6 +8073,7 @@ namespace SFC_USB
                     txtTempMinFan.Text = (sfcParam[PARAM_DESICCANT_MIN_FAN_TEMP] / 10).ToString() +
                                            "." +
                                            (sfcParam[PARAM_DESICCANT_MIN_FAN_TEMP] % 10).ToString();
+                    //TODO rename DUTYn values, add heater and fan params here.
                     break;
             }
         }
